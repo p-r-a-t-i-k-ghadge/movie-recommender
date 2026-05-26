@@ -7,7 +7,7 @@ Recommends **10 similar movies** for any input title based on genres, cast, dire
 
 ## 🗂️ Project Structure
 
-```
+```text
 movie-recommender/
 ├── Movie_Recommendation_System.ipynb   ← Complete Colab notebook
 ├── app.py                              ← Streamlit web app
@@ -17,7 +17,8 @@ movie-recommender/
 ```
 
 > **Note:** `movies.pkl`, `similarity.pkl`, and the CSV datasets are not included  
-> (too large for GitHub). Generate them by running the notebook — Step 10 will download them automatically.
+> because `similarity.pkl` is too large for GitHub upload limits.  
+> Generate them by running the notebook — Step 10 will create/download them automatically.
 
 ---
 
@@ -25,17 +26,19 @@ movie-recommender/
 
 ### Option A — Run in Google Colab (Recommended)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/movie-recommender/blob/main/Movie_Recommendation_System.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/p-r-a-t-i-k-ghadge/movie-recommender/blob/main/Movie_Recommendation_System.ipynb)
 
-1. Click the badge above (replace `YOUR_USERNAME` with your GitHub username)
-2. Run all cells — dataset downloads automatically in Step 0
+1. Upload your Kaggle API token (`kaggle.json`) in Step 0
+2. Run all notebook cells — dataset downloads automatically
 3. Get recommendations in the interactive widget (Step 9)
+
+---
 
 ### Option B — Run Locally
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/movie-recommender.git
+git clone https://github.com/p-r-a-t-i-k-ghadge/movie-recommender.git
 cd movie-recommender
 
 # 2. Install dependencies
@@ -64,7 +67,7 @@ streamlit run app.py
 
 ## 🧠 How It Works
 
-```
+```text
 Load CSVs → Merge → Feature Engineering → Preprocess → Vectorize → Similarity → Recommend
 ```
 
@@ -79,14 +82,15 @@ Load CSVs → Merge → Feature Engineering → Preprocess → Vectorize → Sim
 
 ## 🧪 Example Recommendations
 
-```
+```text
 Because you liked: The Dark Knight
-  1.  The Dark Knight Rises
-  2.  Batman Begins
-  3.  Batman
-  4.  Superman Returns
-  5.  Man of Steel
-  ...
+
+1. The Dark Knight Rises
+2. Batman Begins
+3. Batman
+4. Superman Returns
+5. Man of Steel
+...
 ```
 
 ---
@@ -94,23 +98,31 @@ Because you liked: The Dark Knight
 ## 🌐 Deploy to Streamlit Cloud (Free)
 
 1. Push this repo to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
+2. Go to https://share.streamlit.io
 3. Connect your GitHub repo
 4. Set **Main file path** to `app.py`
 5. Click **Deploy** — live in ~2 minutes
 
-> ⚠️ You need to add `movies.pkl` and `similarity.pkl` to the repo for cloud deployment  
-> (or use Git LFS for large files).
+> ⚠️ `similarity.pkl` can exceed GitHub's file size limit because it stores the full cosine similarity matrix.  
+> For cloud deployment, either:
+> - generate the file locally,
+> - use Git LFS,
+> - or optimize the similarity storage format.
 
 ---
 
 ## 📊 Dataset
 
-**TMDB 5000 Movies** — auto-downloaded in the notebook (no Kaggle account needed).  
-Source mirror: [github.com/dsrscientist/dataset1](https://github.com/dsrscientist/dataset1)
+Dataset: **TMDB 5000 Movies** from Kaggle
 
-- `tmdb_5000_movies.csv` — 4,803 movies with metadata
-- `tmdb_5000_credits.csv` — cast and crew for each movie
+Source:  
+https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
+
+Required files:
+- `tmdb_5000_movies.csv`
+- `tmdb_5000_credits.csv`
+
+The notebook downloads them automatically using your Kaggle API token (`kaggle.json`).
 
 ---
 
